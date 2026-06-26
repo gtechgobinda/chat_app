@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors";
 import fs from "fs"
+import path from "path"
 import "dotenv/config"
 import User from "./models/user.model.js";
 import { connectDB } from "./lib/db.js";
@@ -16,7 +17,7 @@ app.use(express.json())
 app.use(cors({origin:FRONTEND_URL,credentials:true}))
 app.use(clerkMiddleware())
 
-app.use(cors({origin:FR}))
+app.use(cors({origin:FRONTEND_URL}))
 
 app.get("/health",(req,res)=>{
   res.status(200).json({ok:true})
